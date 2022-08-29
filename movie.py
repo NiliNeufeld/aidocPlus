@@ -1,10 +1,8 @@
-# import datetime
 from datetime import datetime
 
 
-
 class Movie:
-    def __init__(self, mid, name, description, score, date, library):
+    def __init__(self, name, description, score, library, mid=0, date=0):
         if mid == 0:
             self.mid = len(library.movies_list) + 1
         else:

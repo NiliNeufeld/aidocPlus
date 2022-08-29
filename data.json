@@ -1,93 +1,44 @@
 [
     {
         "mid": 1,
-        "name": "mohana",
-        "description": "make way make way",
-        "score": 5,
-        "date": "2022-08-29 11:23:14.448879"
+        "name": "moana",
+        "description": "great movie",
+        "score": 4,
+        "date": "2020-08-29 17:32:32.354662"
     },
     {
         "mid": 2,
-        "name": "mohana2",
-        "description": "make way make way",
-        "score": 5,
-        "date": "2022-08-29 11:23:14.449700"
+        "name": "worst movie",
+        "description": "it's a movie",
+        "score": null,
+        "date": "2021-08-29 17:32:32.354662"
     },
     {
         "mid": 3,
-        "name": "mohana3",
-        "description": "make way make way",
-        "score": 5,
-        "date": "2022-08-29 11:23:14.449954"
-    },
-    {
-        "mid": 4,
-        "name": "mohana4",
-        "description": "make way make way",
-        "score": 4,
-        "date": "2022-08-29 11:23:14.450700"
-    },
-    {
-        "mid": 5,
-        "name": "mohana5",
-        "description": "make way make way",
-        "score": 4,
-        "date": "2022-08-29 11:39:18.296722"
+        "name": "movie",
+        "description": "awesome movie",
+        "score": null,
+        "date": "2021-08-29 17:32:32.354662"
     },
     {
         "mid": 6,
-        "name": "hercules",
-        "description": "description",
-        "score": 4,
-        "date": "2022-08-29 11:41:01.086456"
-    },
-    {
-        "mid": 7,
-        "name": "mulan1",
-        "description": "description",
-        "score": 4,
-        "date": "2022-08-29 11:42:46.855729"
-    },
-    {
-        "mid": 8,
-        "name": "mulan2",
-        "description": "description",
-        "score": 4,
-        "date": "2022-08-29 11:43:01.956237"
-    },
-    {
-        "mid": 9,
-        "name": "mulan3",
-        "description": "description",
-        "score": 4,
-        "date": "2022-08-29 12:27:01.875510"
-    },
-    {
-        "mid": 10,
-        "name": "another one",
-        "description": "description",
-        "score": 4,
-        "date": "2022-08-29 12:44:49.868194"
-    },
-    {
-        "mid": 11,
-        "name": "one more",
-        "description": "description",
+        "name": "movie2",
+        "description": "awesome movie",
         "score": null,
-        "date": "2022-08-29 12:45:12.871353"
+        "date": "2021-12-29 17:32:32.354662"
     },
     {
-        "mid": 12,
-        "name": "average movie",
-        "description": "a really average movie",
-        "score": 4,
-        "date": "2022-08-29 12:46:22.898772"
+        "mid": 4,
+        "name": "mean girls",
+        "description": "iconic teen comedy",
+        "score": 5,
+        "date": "2022-08-29 17:32:32.354662"
     },
     {
-        "mid": 13,
-        "name": "moviemovie",
-        "description": "description",
-        "score": 4,
-        "date": "2022-08-29 13:40:50.722638"
+        "mid": 5,
+        "name": "mean girls 2",
+        "description": "a really bad followup for the iconic teen comedy",
+        "score": 1,
+        "date": "2022-08-29 17:32:32.354662"
     }
 ]
