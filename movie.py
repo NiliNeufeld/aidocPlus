@@ -3,7 +3,7 @@ import uuid
 
 
 class Movie:
-    def __init__(self, name, description, score, library, mid=0, date=0):
+    def __init__(self, name, description, score, mid=0, date=0):
         if mid == 0:
             self.mid = uuid.uuid4()
         else:
