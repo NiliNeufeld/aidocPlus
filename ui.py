@@ -1,7 +1,5 @@
 import click
 from library import *
-from create_movie_request import *
-from create_movie_command import *
 
 
 @click.group()
@@ -21,9 +19,8 @@ def add_new_movie(movie_name, description, score):
         print("movie description must be at least 10 characters")
         exit()
     library = Library()
-    cmr = CreateMovieRequest(movie_name, description, score)
-    cmc = CreateMovieCommand(movie_name, description, score)
-    library.add_movie(cmc)
+    new_movie = Movie(movie_name, description, score)
+    library.add_movie(new_movie)
     print(new_movie)
 
 
