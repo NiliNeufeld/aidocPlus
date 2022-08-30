@@ -1,44 +1,44 @@
 [
     {
-        "mid": 1,
+        "mid": "1140f595-060f-4284-881d-c204d1874953",
+        "name": "uuidmovie",
+        "description": "testing uuid",
+        "score": null,
+        "date": "2022-08-30 14:11:48.166849"
+    },
+    {
+        "mid": "01a8da78-ca47-481c-a4fd-47879e76a241",
+        "name": "fsfv",
+        "description": "vfsljhkjh fsddfg",
+        "score": null,
+        "date": "2022-08-30 14:11:48.166849"
+    },
+    {
+        "mid": "5aa0a87e-a9fc-4134-9393-7adaf69e9b94",
+        "name": "fsn",
+        "description": "vfsvn fkjk",
+        "score": null,
+        "date": "2022-08-30 14:11:48.166849"
+    },
+    {
+        "mid": "2e7fb852-b733-4430-940f-b40128bef136",
         "name": "moana",
-        "description": "great movie",
-        "score": 4,
-        "date": "2020-08-29 17:32:32.354662"
-    },
-    {
-        "mid": 2,
-        "name": "worst movie",
-        "description": "it's a movie",
+        "description": "kjhfe rvever  f",
         "score": null,
-        "date": "2021-08-29 17:32:32.354662"
+        "date": "2022-08-30 14:11:48.166849"
     },
     {
-        "mid": 3,
-        "name": "movie",
-        "description": "awesome movie",
-        "score": null,
-        "date": "2021-08-29 17:32:32.354662"
-    },
-    {
-        "mid": 6,
-        "name": "movie2",
-        "description": "awesome movie",
-        "score": null,
-        "date": "2021-12-29 17:32:32.354662"
-    },
-    {
-        "mid": 4,
+        "mid": "fa392a9c-007e-4d08-bc83-4c23911a15a3",
         "name": "mean girls",
         "description": "iconic teen comedy",
         "score": 5,
-        "date": "2022-08-29 17:32:32.354662"
+        "date": "2022-08-30 14:11:48.166849"
     },
     {
-        "mid": 5,
-        "name": "mean girls 2",
-        "description": "a really bad followup for the iconic teen comedy",
-        "score": 1,
-        "date": "2022-08-29 17:32:32.354662"
+        "mid": "c6de8e4f-ccd9-43f1-8b9f-40c1ca17d0ad",
+        "name": "moana2",
+        "description": "make way make way",
+        "score": 5,
+        "date": "2022-08-30 14:11:48.166849"
     }
 ]

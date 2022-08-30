@@ -1,10 +1,11 @@
 from datetime import datetime
+import uuid
 
 
 class Movie:
     def __init__(self, name, description, score, library, mid=0, date=0):
         if mid == 0:
-            self.mid = len(library.movies_list) + 1
+            self.mid = uuid.uuid4()
         else:
             self.mid = mid
         self.name = name
