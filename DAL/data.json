@@ -1,58 +1,23 @@
 [
     {
-        "mid": "cd11ad32-842d-4a87-ae4f-4aa3e8b0a0c1",
-        "name": "checking 3 tier",
-        "description": "checkcheckcheck",
-        "score": null,
-        "date": "2022-09-03 21:39:44.964552"
-    },
-    {
-        "mid": "68baabfd-f164-438c-b6e5-1ac3ee6e2975",
-        "name": "news",
-        "description": "newstttttttt",
-        "score": null,
-        "date": "2022-09-03 22:54:13.737631"
-    },
-    {
-        "mid": "ba42f400-2672-4532-aedf-e8bfba51024f",
-        "name": "movie1",
-        "description": "checkcheck",
+        "mid": "80bff78a-9956-497f-a3f9-a07616e7b1bd",
+        "name": "utc",
+        "description": "utcchecking",
         "score": 5,
-        "date": "2022-09-03 22:59:22.925562"
+        "date": "2022-09-04 18:04:27.350140+00:00"
     },
     {
-        "mid": "62589664-719e-40a2-9a7d-b5b2c46a93cb",
-        "name": "movie2",
-        "description": "checkcheck",
-        "score": 5,
-        "date": "2022-09-03 22:59:41.828847"
-    },
-    {
-        "mid": "20a898ee-735e-49f7-bfa5-ea7779512b88",
-        "name": "movie3",
-        "description": "checkcheck",
-        "score": 3,
-        "date": "2022-09-03 22:59:50.527544"
-    },
-    {
-        "mid": "2ce6ade6-0073-4943-a43e-d63ef138dac3",
-        "name": "movie4",
-        "description": "checkcheck",
-        "score": 4,
-        "date": "2022-09-03 22:59:57.867597"
-    },
-    {
-        "mid": "dcc46f7d-d763-48af-a0cd-006374b5aeed",
-        "name": "movie5",
-        "description": "checkcheck",
-        "score": 5,
-        "date": "2022-09-03 23:00:08.500273"
-    },
-    {
-        "mid": "49769145-89dd-4b2c-b060-5f09d675468a",
-        "name": "movie",
-        "description": "checkcheck",
+        "mid": "63dbf767-dd20-4ab0-a675-d5dd6d9e31cf",
+        "name": "check",
+        "description": "typehintschecking",
         "score": null,
-        "date": "2022-09-03 23:00:15.284267"
+        "date": "2022-09-04 18:48:55.550946+00:00"
+    },
+    {
+        "mid": "33a3a166-2234-44d1-9e86-dde8fb2cf929",
+        "name": "structure check",
+        "description": "structure check",
+        "score": null,
+        "date": "2022-09-04 18:52:47.051215+00:00"
     }
 ]

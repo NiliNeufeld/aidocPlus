@@ -1,9 +1,9 @@
-from datetime import datetime
 import uuid
+import datetime
 
 
 class Movie:
-    def __init__(self, name, description, score, mid=0, date=0):
+    def __init__(self, name: str, description: str, score: int, date: datetime, mid=0) -> None:
         if mid == 0:
             self.mid = uuid.uuid4()
         else:
@@ -11,12 +11,9 @@ class Movie:
         self.name = name
         self.description = description
         self.score = score
-        if date == 0:
-            self.date = datetime.now()
-        else:
-            self.date = date
+        self.date = date
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "Movie name: % s\n" \
                "Description: % s\n" \
                "Critic score: % s\n" \
