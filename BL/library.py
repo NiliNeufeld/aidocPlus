@@ -17,4 +17,8 @@ class Library:
         return self._repo.get_latest_movies()
 
     def get_movie(self, movie_id: int) -> Movie:
-        return self._repo.get_movie(movie_id)
+        latest_movies = self._repo.get_latest_movies()
+        if movie_id > len(latest_movies):
+            return None
+        else:
+            return latest_movies[movie_id-1]

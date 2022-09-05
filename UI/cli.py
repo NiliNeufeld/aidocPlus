@@ -12,12 +12,12 @@ def main():
 @click.option('--description', '-d', prompt=True, help="Description of the movie", required=True)
 @click.option('--score', '-s', type=click.IntRange(1, 5), help="Movie's critic score", required=False)
 def create_movie_request(movie_name: str, description: str, score: int):
-    if len(movie_name) < 2:
+    while len(movie_name) < 2:
         print("movie name must contain at least 2 characters")
-        return
-    if len(description) < 10:
+        movie_name = click.prompt('Please enter a valid movie name')
+    while len(description) < 10:
         print("movie description must contain at least 10 characters")
-        return
+        movie_name = click.prompt('Please enter a valid movie description')
     library = Library()
     cmc = CreateMovieCommand(movie_name, description, score)
     new_movie: Movie = library.add_movie(cmc)
@@ -37,7 +37,7 @@ def get_latest_movies_request() -> list:
 
 
 @main.command()
-@click.option('--movie_id', '-mid', prompt=True, help="movie id", required=True)
+@click.option('--movie_id', '-mid', type=click.IntRange(1, NUMBER_OF_MOVIES), prompt=True, help="movie id", required=True)
 def get_movie_request(movie_id: int):
     library = Library()
     movie = library.get_movie(movie_id)

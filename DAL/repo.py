@@ -30,5 +30,5 @@ class JsonRepo:
         sorted_by_date = sorted(self.movies_list, key=lambda x: x.date, reverse=True)
         return sorted_by_date[:NUMBER_OF_MOVIES]
 
-    def get_movie(self, movie_id: int) -> Movie:
+    def get_movie_id(self, movie_id: int) -> Movie:
         return next((x for x in self.movies_list if x.mid == movie_id), None)
