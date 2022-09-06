@@ -1,4 +1,4 @@
-from DAL.repo import *
+from DAL.DB_repo import *
 from BL.create_movie_command import CreateMovieCommand
 from common.movie import *
 import datetime
@@ -6,7 +6,8 @@ import datetime
 
 class Library:
     def __init__(self) -> None:
-        self._repo = JsonRepo()
+        self._repo = DBRepo()
+        self._repo.create_movies_table()
 
     def add_movie(self, cmc: CreateMovieCommand) -> Movie:
         new_movie = Movie(cmc.name, cmc.description, cmc.score, datetime.datetime.now(datetime.timezone.utc))
@@ -18,7 +19,7 @@ class Library:
 
     def get_movie(self, movie_id: int) -> Movie:
         latest_movies = self._repo.get_latest_movies()
-        if movie_id > len(latest_movies):
+        if latest_movies is None or movie_id > len(latest_movies):
             return None
         else:
             return latest_movies[movie_id-1]

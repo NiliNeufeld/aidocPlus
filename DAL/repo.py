@@ -10,7 +10,7 @@ NUMBER_OF_MOVIES = 5
 class JsonRepo:
     def __init__(self) -> None:
         self.movies_list = []
-        with open(directory + "\data.json") as f:  # TODO: add try-catch
+        with open(directory + "\data.json") as f:
             movies_library = json.load(f)
             f.close()
         for item in movies_library:
@@ -20,7 +20,7 @@ class JsonRepo:
 
     def add_movie(self, new_movie: Movie) -> None:
         self.movies_list.append(new_movie)
-        f = open(directory + "\data.json", "w")  # TODO: add try-catch
+        f = open(directory + "\data.json", "w")
         f.write(json.dumps([m.__dict__ for m in self.movies_list], default=str, indent=4))
         f.close()
 

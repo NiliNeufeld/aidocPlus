@@ -37,12 +37,12 @@ def get_latest_movies_request() -> list:
 
 
 @main.command()
-@click.option('--movie_id', '-mid', type=click.IntRange(1, NUMBER_OF_MOVIES), prompt=True, help="movie id", required=True)
-def get_movie_request(movie_id: int):
+@click.option('--movie_number', '-m', type=click.IntRange(1, NUMBER_OF_MOVIES), prompt=True, help="movie id", required=True)
+def get_movie_request(movie_number: int):
     library = Library()
-    movie = library.get_movie(movie_id)
+    movie = library.get_movie(movie_number)
     if movie is None:
-        print("movie id does not exist")
+        print("movie does not exist")
     else:
         print(movie)
 
