@@ -1,5 +1,7 @@
-from BL.library import *
+from BL.library import Library
+from BL.create_movie_command import CreateMovieCommand
 import click
+#from BL.library import NUMBER_OF_MOVIES
 
 
 @click.group()
@@ -20,24 +22,25 @@ def create_movie_request(movie_name: str, description: str, score: int):
         movie_name = click.prompt('Please enter a valid movie description')
     library = Library()
     cmc = CreateMovieCommand(movie_name, description, score)
-    new_movie: Movie = library.add_movie(cmc)
+    new_movie = library.add_movie(cmc)
     print(new_movie)
 
 
 @main.command()
-def get_latest_movies_request() -> list:
+@click.option('--number_of_movies', '-m', type=click.IntRange(1, ), prompt=True, help="movie id", required=True)
+def get_latest_movies_request(number_of_movies: int) -> list:
     library = Library()
-    movies = library.get_latest_movies()
+    movies = library.get_latest_movies(number_of_movies)
     if movies is None:
         print("movies library is empty")
     else:
-        for i, movie in zip(range(NUMBER_OF_MOVIES), movies):
+        for i, movie in zip(range(number_of_movies), movies):
             print(i+1, movie.name)
         return movies
 
 
 @main.command()
-@click.option('--movie_number', '-m', type=click.IntRange(1, NUMBER_OF_MOVIES), prompt=True, help="movie id", required=True)
+@click.option('--movie_number', '-m', type=click.IntRange(1, ), prompt=True, help="movie id", required=True)
 def get_movie_request(movie_number: int):
     library = Library()
     movie = library.get_movie(movie_number)

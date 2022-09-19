@@ -1,9 +1,9 @@
-from common.movie import *
-from DAL.DB_handler import *
+from common.movie import Movie
+from DAL.DB_handler import DBHandler
 from datetime import datetime
+# from BL.library import NUMBER_OF_MOVIES
 import os
 
-NUMBER_OF_MOVIES = 5
 DB_LOCATION = os.path.dirname(os.path.abspath(__file__)) + "\\aidoc_plus.db"
 
 
@@ -11,7 +11,6 @@ class DBRepo:
 
     def __init__(self) -> None:
         self.DB = DBHandler(DB_LOCATION)
-
 
     def create_movies_table(self):
         self.DB.cur.execute(""" CREATE TABLE IF NOT EXISTS movies (
@@ -46,8 +45,8 @@ class DBRepo:
         self.DB.commit()
         self.DB.close()
 
-    def get_latest_movies(self) -> list:
-        sql = "SELECT * FROM movies ORDER BY date DESC Limit "+str(NUMBER_OF_MOVIES)
+    def get_latest_movies(self, number_of_movies) -> list:
+        sql = "SELECT * FROM movies ORDER BY date DESC Limit "+str(number_of_movies)
         self.DB.cur.execute(sql)
         rows = self.DB.cur.fetchall()
         if not rows:
