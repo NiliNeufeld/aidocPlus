@@ -8,5 +8,10 @@ import os
 
 DB_LOCATION = os.path.dirname(os.path.abspath(__file__)) + "\\aidoc_plus.db"
 
-if __name__ == '__main__':
-    cli.main_menu()
+library = Library(
+    repo=MoviesRepo(
+        repo=DBRepo(
+            db_handler=DBHandler(DB_LOCATION)
+        )
+    )
+)

@@ -1,16 +1,12 @@
 from common.movie import Movie
 from DAL.DB_handler import DBHandler
 from datetime import datetime
-# from BL.library import NUMBER_OF_MOVIES
-import os
-
-DB_LOCATION = os.path.dirname(os.path.abspath(__file__)) + "\\aidoc_plus.db"
 
 
 class DBRepo:
 
-    def __init__(self) -> None:
-        self.DB = DBHandler(DB_LOCATION)
+    def __init__(self, db_handler: DBHandler) -> None:
+        self.DB = db_handler
 
     def create_movies_table(self):
         self.DB.cur.execute(""" CREATE TABLE IF NOT EXISTS movies (
