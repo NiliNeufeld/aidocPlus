@@ -4,7 +4,7 @@ import sqlite3
 
 class DBHandler:
 
-    def __init__(self, db_location: str) -> None:
+    def __init__(self, db_location: str):
         try:
             self.connection = sqlite3.connect(db_location, detect_types=sqlite3.PARSE_DECLTYPES)
             self.cur = self.connection.cursor()

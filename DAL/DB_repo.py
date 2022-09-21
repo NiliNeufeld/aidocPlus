@@ -1,11 +1,12 @@
+from DAL.movies_repo import MoviesRepo
 from common.movie import Movie
 from DAL.DB_handler import DBHandler
 from datetime import datetime
 
 
-class DBRepo:
+class DBRepo(MoviesRepo):
 
-    def __init__(self, db_handler: DBHandler) -> None:
+    def __init__(self, db_handler: DBHandler):
         self.DB = db_handler
 
     def create_movies_table(self):
@@ -41,7 +42,7 @@ class DBRepo:
         self.DB.commit()
         self.DB.close()
 
-    def get_latest_movies(self, number_of_movies) -> list:
+    def get_latest_movies(self, number_of_movies: int) -> list:
         sql = "SELECT * FROM movies ORDER BY date DESC Limit "+str(number_of_movies)
         self.DB.cur.execute(sql)
         rows = self.DB.cur.fetchall()
@@ -53,5 +54,5 @@ class DBRepo:
             movies_list.append(m)
         return movies_list
 
-    # def get_movie_id(self, movie_id: int) -> Movie:
-    #     return next((x for x in self.movies_list if x.mid == movie_id), None)
+     # def get_movie_id(self, movie_id: int) -> Movie:
+         # return next((x for x in self.movies_list if x.mid == movie_id), None)
