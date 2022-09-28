@@ -13,7 +13,7 @@ if should_use_db_repo:
     repo = DBRepo(DBHandler(DB_LOCATION))
     repo.create_movies_table()
 else:
-    JsonRepo(JSON_LOCATION)
+    repo = JsonRepo(JSON_LOCATION)
 library = Library(repo)
 
 

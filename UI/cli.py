@@ -3,6 +3,7 @@ import click
 from UI.dependecies import library
 
 
+
 @click.group()
 def main_menu():
     pass
@@ -25,24 +26,31 @@ def create_movie_request(movie_name: str, description: str, score: int):
 
 
 @main_menu.command()
-@click.option('--number_of_movies', '-m', type=click.IntRange(1, ), prompt=True, help="movie id", required=True)
-def get_latest_movies_request(number_of_movies: int) -> list:
+@click.option('--number_of_movies', '-m', type=click.IntRange(1, ), prompt=True, help="latest movies", required=True)
+def get_latest_movies_request(number_of_movies: int):
     movies = library.get_latest_movies(number_of_movies)
     if movies is None:
         print("movies library is empty")
     else:
         for i, movie in zip(range(number_of_movies), movies):
             print(i+1, ":", movie.name)
-        return movies
+        movie_number = input("which movie would you like to watch:")
+        while int(movie_number) > number_of_movies or int(movie_number) < 1:
+            print("the number you entered is out of list range")
+            movie_number = input("which movie would you like to watch:")
+        else:
+            movie = library.get_movie(movies[int(movie_number)-1].mid)
+            print(movie)
+
+# @main_menu.command()
+# @click.option('--movie_number', '-m', type=click.IntRange(1, ), prompt=True, help="movie id", required=True)
+# def get_movie_request(movie_number: int):
+#     movie = library.get_movie(movie_number)
+#     if movie is None:
+#         click.echo("movie does not exist")
+#     else:
+#         click.echo(movie)
 
 
-@main_menu.command()
-@click.option('--movie_number', '-m', type=click.IntRange(1, ), prompt=True, help="movie id", required=True)
-def get_movie_request(movie_number: int):
-    movie = library.get_movie(movie_number)
-    if movie is None:
-        print("movie does not exist")
-    else:
-        print(movie)
 
 

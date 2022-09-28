@@ -1,13 +1,9 @@
-import uuid
 import datetime
 
 
 class Movie:
-    def __init__(self, name: str, description: str, score: int, date: datetime, mid=0) -> None:
-        if mid == 0:
-            self.mid = uuid.uuid4()
-        else:
-            self.mid = mid
+    def __init__(self, name: str, description: str, score: int, date: datetime, mid):
+        self.mid = mid
         self.name = name
         self.description = description
         self.score = score

@@ -1,7 +1,8 @@
 from DAL.movies_repo import MoviesRepo
 from common.movie import Movie
+from common.movie_summary import MovieSummary
 from DAL.DB_handler import DBHandler
-from datetime import datetime
+from typing import List
 
 
 class DBRepo(MoviesRepo):
@@ -42,7 +43,7 @@ class DBRepo(MoviesRepo):
         self.DB.commit()
         self.DB.close()
 
-    def get_latest_movies(self, number_of_movies: int) -> list:
+    def get_latest_movies(self, number_of_movies: int) -> List[MovieSummary]:
         sql = "SELECT * FROM movies ORDER BY date DESC Limit "+str(number_of_movies)
         self.DB.cur.execute(sql)
         rows = self.DB.cur.fetchall()
@@ -50,10 +51,16 @@ class DBRepo(MoviesRepo):
             return None
         movies_list = []
         for row in rows:
-            m = Movie(row[1], row[2], row[3], row[4], row[0])  # datetime.strptime(row[4], "%Y-%m-%d %H:%M:%S.%f%z")
+            m = MovieSummary(row[1], row[0])
             movies_list.append(m)
         return movies_list
 
-    def get_movie_id(self, movie_id: int) -> Movie:
-        movies_list = self.get_latest_movies()
-        return movies_list[movie_id-1]
+    def get_movie_id(self, movie_id: str) -> Movie:
+        sql = "SELECT * FROM movies WHERE mid ="+"\'"+movie_id+"\'"
+        self.DB.cur.execute(sql)
+        rows = self.DB.cur.fetchall()
+        if not rows:
+            return None
+        for row in rows:
+            m = Movie(row[1], row[2], row[3], row[4], row[0])
+        return m

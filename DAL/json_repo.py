@@ -2,6 +2,8 @@ import json
 from common.movie import *
 from datetime import datetime
 from DAL.movies_repo import MoviesRepo
+from common.movie_summary import MovieSummary
+from typing import List
 
 
 class JsonRepo(MoviesRepo):
@@ -24,17 +26,24 @@ class JsonRepo(MoviesRepo):
         f.write(json.dumps([m.__dict__ for m in self.movies_list], default=str, indent=4))
         f.close()
 
+    def convert_movies_to_summary(self, movies: List[Movie]):
+        movies_summary = []
+        for item in movies:
+            summary = MovieSummary(item.name, item.mid)
+            movies_summary.append(summary)
+        return movies_summary
+
     def add_movie(self, new_movie: Movie) -> None:
         self.load_data()
         self.movies_list.append(new_movie)
         self.update_data()
 
-    def get_latest_movies(self, number_of_movies: int) -> list:
+    def get_latest_movies(self, number_of_movies: int) -> List[MovieSummary]:
         self.load_data()
         if not self.movies_list:
             return None
         sorted_by_date = sorted(self.movies_list, key=lambda x: x.date, reverse=True)
-        return sorted_by_date[:number_of_movies]
+        return self.convert_movies_to_summary(sorted_by_date[:number_of_movies])
 
     def get_movie_id(self, movie_id: int) -> Movie:
         self.load_data()
