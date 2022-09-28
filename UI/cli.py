@@ -1,7 +1,6 @@
-from BL.library import Library
 from BL.create_movie_command import CreateMovieCommand
 import click
-from UI.dependecis import library
+from UI.dependecies import library
 
 
 @click.group()

@@ -7,7 +7,6 @@ import datetime
 class Library:
     def __init__(self, repo: MoviesRepo) -> None:
         self._repo = repo
-        # self._repo.create_movies_table()
 
     def add_movie(self, cmc: CreateMovieCommand) -> Movie:
         new_movie = Movie(cmc.name, cmc.description, cmc.score, datetime.datetime.now(datetime.timezone.utc))
@@ -24,6 +23,4 @@ class Library:
         else:
             return latest_movies[movie_id-1]
 
-    # def check(self) -> str:
-    #     print("library instance created")
 

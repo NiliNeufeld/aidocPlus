@@ -54,5 +54,6 @@ class DBRepo(MoviesRepo):
             movies_list.append(m)
         return movies_list
 
-     # def get_movie_id(self, movie_id: int) -> Movie:
-         # return next((x for x in self.movies_list if x.mid == movie_id), None)
+    def get_movie_id(self, movie_id: int) -> Movie:
+        movies_list = self.get_latest_movies()
+        return movies_list[movie_id-1]
