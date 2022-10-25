@@ -22,4 +22,16 @@ class Library:
     def get_movie(self, movie_id: str) -> Movie:
         return self._repo.get_movie_id(movie_id)
 
+    def search_movie(self, search_value: str) -> Movie:
+        all_movies = self._repo.get_all_movies()
+        matched_movies = []
+        for movie in all_movies:
+            x = movie.name.find(search_value)
+            if x != -1:
+                matched_movies.append(movie)
+        if matched_movies:
+            return matched_movies
+        else:
+            return None
+
 

@@ -15,3 +15,7 @@ class MoviesRepo(ABC):
     @abstractmethod
     def get_movie_id(self, movie_id: str):
         pass
+
+    @abstractmethod
+    def get_all_movies(self, movie_id: str):
+        pass

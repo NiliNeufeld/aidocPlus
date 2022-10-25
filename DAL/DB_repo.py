@@ -24,16 +24,7 @@ class DBRepo(MoviesRepo):
     #     rows = self.DB.cur.fetchall()
     #     for row in rows:
     #         print(row)
-    #
-    # def delete_task(self, mid):
-    #     sql = 'DELETE FROM movies WHERE mid=?'
-    #     self.DB.cur.execute(sql, (mid,))
-    #     self.DB.connection.commit()
-    #
-    # def delete_all_tasks(self):
-    #     sql = 'DELETE FROM movies'
-    #     self.DB.cur.execute(sql)
-    #     self.DB.connection.commit()
+
 
     def add_movie(self, new_movie: Movie) -> None:
         sql = ''' INSERT INTO movies(mid,name,description,score,date)
@@ -64,3 +55,15 @@ class DBRepo(MoviesRepo):
         for row in rows:
             m = Movie(row[1], row[2], row[3], row[4], row[0])
         return m
+
+    def get_all_movies(self) -> List[MovieSummary]:
+        sql = "SELECT * FROM movies"
+        self.DB.cur.execute(sql)
+        rows = self.DB.cur.fetchall()
+        if not rows:
+            return None
+        movies_list = []
+        for row in rows:
+            m = MovieSummary(row[1], row[0])
+            movies_list.append(m)
+        return movies_list
