@@ -1,5 +1,6 @@
 from DAL.movies_repo import MoviesRepo
 from BL.create_movie_command import CreateMovieCommand
+from BL.validations import Validations
 from common.movie import Movie
 from common.movie_summary import MovieSummary
 import datetime
@@ -8,8 +9,9 @@ from typing import List
 
 
 class Library:
-    def __init__(self, repo: MoviesRepo) -> None:
+    def __init__(self, repo: MoviesRepo, val: Validations):
         self._repo = repo
+        self.val = val
 
     def add_movie(self, cmc: CreateMovieCommand) -> Movie:
         new_movie = Movie(cmc.name, cmc.description, cmc.score, datetime.datetime.now(datetime.timezone.utc), uuid.uuid4())
@@ -23,15 +25,13 @@ class Library:
         return self._repo.get_movie_id(movie_id)
 
     def search_movie(self, search_value: str) -> Movie:
-        all_movies = self._repo.get_all_movies()
-        matched_movies = []
-        for movie in all_movies:
-            x = movie.name.find(search_value)
-            if x != -1:
-                matched_movies.append(movie)
-        if matched_movies:
-            return matched_movies
+        if not self.val.search_validation(search_value):
+            raise ValueError("please enter a search string longer than two characters and without any digits")
         else:
-            return None
+            matched_movies = self._repo.search_movies(search_value)
+            if matched_movies:
+                return matched_movies
+            else:
+                return None
 
 

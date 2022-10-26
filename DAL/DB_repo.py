@@ -56,8 +56,8 @@ class DBRepo(MoviesRepo):
             m = Movie(row[1], row[2], row[3], row[4], row[0])
         return m
 
-    def get_all_movies(self) -> List[MovieSummary]:
-        sql = "SELECT * FROM movies"
+    def search_movies(self, value) -> List[MovieSummary]:
+        sql = "SELECT * FROM movies WHERE name LIKE "+"\'%"+value+"%\'"
         self.DB.cur.execute(sql)
         rows = self.DB.cur.fetchall()
         if not rows:
