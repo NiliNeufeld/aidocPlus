@@ -1,5 +1,4 @@
 import unittest
-from unittest.mock import Mock
 from BL.validations import Validations
 
 
@@ -37,3 +36,4 @@ class TestSearchValidation(unittest.TestCase):
 
         # Assert
         self.assertFalse(output)
+

@@ -24,14 +24,11 @@ class Library:
     def get_movie(self, movie_id: str) -> Movie:
         return self._repo.get_movie_id(movie_id)
 
-    def search_movie(self, search_value: str) -> Movie:
+    def search_movie(self, search_value: str) -> List[MovieSummary]:
         if not self.val.search_validation(search_value):
             raise ValueError("please enter a search string longer than two characters and without any digits")
-        else:
-            matched_movies = self._repo.search_movies(search_value)
-            if matched_movies:
-                return matched_movies
-            else:
-                return None
+
+        return self._repo.search_movies(search_value)
+
 
 
