@@ -1,7 +1,6 @@
 from BL.create_movie_command import CreateMovieCommand
 import click
-from UI.dependecies import library
-
+from UI.dependecies import library, val
 
 @click.group()
 def main_menu():
@@ -51,5 +50,20 @@ def get_latest_movies_request(number_of_movies: int):
 #         click.echo(movie)
 
 
-
+@main_menu.command()
+@click.option('--search_value', '-s',  prompt=True, help="search", required=True)
+def search_request(search_value: str):
+    while not val.search_validation(search_value):
+        search_value = click.prompt(
+            "please enter a search string longer than two characters and without any digits")
+    try:
+        search_results = library.search_movie(search_value)
+    except ValueError as ve:
+        print(ve)
+    else:
+        if search_results is None:
+            print("No matched results were found")
+        else:
+            for i, movie in zip(range(len(search_results)), search_results):
+                print(i+1, ":", movie.name)
 

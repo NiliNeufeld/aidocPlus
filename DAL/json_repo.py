@@ -26,7 +26,7 @@ class JsonRepo(MoviesRepo):
         f.write(json.dumps([m.__dict__ for m in self.movies_list], default=str, indent=4))
         f.close()
 
-    def convert_movies_to_summary(self, movies: List[Movie]):
+    def convert_movies_to_summary(self, movies: List[Movie]) -> List[MovieSummary]:
         movies_summary = []
         for item in movies:
             summary = MovieSummary(item.name, item.mid)
@@ -48,3 +48,6 @@ class JsonRepo(MoviesRepo):
     def get_movie_id(self, movie_id: int) -> Movie:
         self.load_data()
         return next((x for x in self.movies_list if x.mid == movie_id), None)
+
+    def search_movies(self, value) -> List[MovieSummary]:
+        print("searching")
