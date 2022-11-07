@@ -3,7 +3,6 @@ import click
 from UI.dependecies import library
 
 
-
 @click.group()
 def main_menu():
     pass
