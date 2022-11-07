@@ -19,9 +19,7 @@ class Movie(Resource):
     def post(self):
         args = parser.parse_args()
         cmc = CreateMovieCommand(args['name'], args['description'], args['score'])
-        print("cmc created")
         new_movie = library.add_movie(cmc)
-        # return f"movie name: {args['name']} and score: {args['score']}"
         return f"new movie:{new_movie}"
 
 

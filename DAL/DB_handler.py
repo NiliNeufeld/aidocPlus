@@ -5,8 +5,13 @@ import sqlite3
 class DBHandler:
 
     def __init__(self, db_location: str):
+        self.db_location = db_location
+        self.connection = None
+        self.cur = None
+
+    def connect(self) -> None:
         try:
-            self.connection = sqlite3.connect(db_location, detect_types=sqlite3.PARSE_DECLTYPES)
+            self.connection = sqlite3.connect(self.db_location, detect_types=sqlite3.PARSE_DECLTYPES)
             self.cur = self.connection.cursor()
         except Error as e:
             print(e)

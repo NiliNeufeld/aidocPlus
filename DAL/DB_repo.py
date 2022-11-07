@@ -11,6 +11,7 @@ class DBRepo(MoviesRepo):
         self.DB = db_handler
 
     def create_movies_table(self):
+        self.DB.connect()
         self.DB.cur.execute(""" CREATE TABLE IF NOT EXISTS movies (
                                         mid text PRIMARY KEY,
                                         name text NOT NULL,
@@ -39,12 +40,14 @@ class DBRepo(MoviesRepo):
         sql = ''' INSERT INTO movies(mid,name,description,score,date)
                           VALUES(?,?,?,?,?) '''
         movie_data = (str(new_movie.mid), new_movie.name, new_movie.description, new_movie.score, new_movie.date)
+        self.DB.connect()
         self.DB.execute(sql, movie_data)
         self.DB.commit()
         self.DB.close()
 
     def get_latest_movies(self, number_of_movies: int) -> List[MovieSummary]:
         sql = "SELECT * FROM movies ORDER BY date DESC Limit "+str(number_of_movies)
+        self.DB.connect()
         self.DB.cur.execute(sql)
         rows = self.DB.cur.fetchall()
         if not rows:
@@ -53,14 +56,17 @@ class DBRepo(MoviesRepo):
         for row in rows:
             m = MovieSummary(row[1], row[0])
             movies_list.append(m)
+        self.DB.close()
         return movies_list
 
     def get_movie_id(self, movie_id: str) -> Movie:
         sql = "SELECT * FROM movies WHERE mid ="+"\'"+movie_id+"\'"
+        self.DB.connect()
         self.DB.cur.execute(sql)
         rows = self.DB.cur.fetchall()
         if not rows:
             return None
         for row in rows:
             m = Movie(row[1], row[2], row[3], row[4], row[0])
+        self.DB.close()
         return m
