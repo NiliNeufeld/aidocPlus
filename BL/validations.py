@@ -4,3 +4,4 @@ class Validations:
         if len(value) < 3 or any(char.isdigit() for char in value):
             return False
         return True
+

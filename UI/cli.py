@@ -40,15 +40,6 @@ def get_latest_movies_request(number_of_movies: int):
             movie = library.get_movie(movies[int(movie_number)-1].mid)
             print(movie)
 
-# @main_menu.command()
-# @click.option('--movie_number', '-m', type=click.IntRange(1, ), prompt=True, help="movie id", required=True)
-# def get_movie_request(movie_number: int):
-#     movie = library.get_movie(movie_number)
-#     if movie is None:
-#         click.echo("movie does not exist")
-#     else:
-#         click.echo(movie)
-
 
 @main_menu.command()
 @click.option('--search_value', '-s',  prompt=True, help="search", required=True)

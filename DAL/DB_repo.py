@@ -20,13 +20,6 @@ class DBRepo(MoviesRepo):
                                         date timestamp
                                     ); """)
 
-    # def select_all_movies(self):
-    #     self.DB.cur.execute("SELECT * FROM movies")
-    #     rows = self.DB.cur.fetchall()
-    #     for row in rows:
-    #         print(row)
-
-
     def add_movie(self, new_movie: Movie) -> None:
         sql = ''' INSERT INTO movies(mid,name,description,score,date)
                           VALUES(?,?,?,?,?) '''
@@ -59,14 +52,12 @@ class DBRepo(MoviesRepo):
             return None
         for row in rows:
             m = Movie(row[1], row[2], row[3], row[4], row[0])
-<<<<<<< HEAD
         self.DB.close()
-        return m
-=======
         return m
 
     def search_movies(self, value) -> List[MovieSummary]:
         sql = "SELECT * FROM movies WHERE name LIKE "+"\'%"+value+"%\'"
+        self.DB.connect()
         self.DB.cur.execute(sql)
         rows = self.DB.cur.fetchall()
         if not rows:
@@ -75,5 +66,6 @@ class DBRepo(MoviesRepo):
         for row in rows:
             m = MovieSummary(row[1], row[0])
             movies_list.append(m)
+        self.DB.close()
         return movies_list
->>>>>>> tests
+
