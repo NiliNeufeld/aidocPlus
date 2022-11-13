@@ -1,10 +1,10 @@
-from flask import Flask, Response
+from flask import Flask, Response, jsonify
 from flask_restx import Resource, Api, reqparse, inputs
 
 from BL.create_movie_command import CreateMovieCommand
 from UI.dependecies import library
 from UI.validations import new_movie_validation
-import json
+
 
 app = Flask(__name__)
 api = Api(app)
@@ -31,7 +31,7 @@ class Movie(Resource):
         if not new_movie_validation(cmc):
             return "values didn't pass validation, try again", 400
         new_movie = library.add_movie(cmc)
-        return json.dumps(new_movie.__dict__, sort_keys=True, default=str)
+        return jsonify(new_movie.__dict__)
 
 
 @api.route('/movie/<string:movie_id>')
@@ -40,7 +40,8 @@ class Movie(Resource):
         new_movie = library.get_movie(movie_id)
         if new_movie is None:
             return "movie not found", 404
-        return json.dumps(new_movie.__dict__, sort_keys=True, default=str)
+        # return json.dumps(new_movie.__dict__, sort_keys=True, default=str)
+        return jsonify(new_movie.__dict__)
 
 
 @api.route('/latestMovies')
@@ -52,7 +53,7 @@ class Movie(Resource):
         if movies is None:
             return None
         else:
-            return json.dumps([obj.__dict__ for obj in movies], sort_keys=True, default=str)
+            return jsonify([obj.__dict__ for obj in movies])
 
 
 @api.route('/searchMovie')
@@ -67,4 +68,4 @@ class Movie(Resource):
         else:
             if search_results is None:
                 return None
-            return json.dumps([obj.__dict__ for obj in search_results], sort_keys=True, default=str)
+            return jsonify([obj.__dict__ for obj in search_results])
