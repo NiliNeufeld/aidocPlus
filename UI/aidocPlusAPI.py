@@ -40,7 +40,6 @@ class Movie(Resource):
         new_movie = library.get_movie(movie_id)
         if new_movie is None:
             return "movie not found", 404
-        # return json.dumps(new_movie.__dict__, sort_keys=True, default=str)
         return jsonify(new_movie.__dict__)
 
 
