@@ -1,5 +1,5 @@
 import UI.cli as cli
-import UI.aidocPlusAPI as api
+import UI.api as api
 
 should_use_api = True
 

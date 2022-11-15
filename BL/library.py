@@ -27,8 +27,16 @@ class Library:
     def search_movie(self, search_value: str) -> List[MovieSummary]:
         if not self.val.search_validation(search_value):
             raise ValueError("please enter a search string longer than two characters and without any digits")
-
         return self._repo.search_movies(search_value)
+
+    def delete_movie(self, movie_id: str) -> bool:
+        return self._repo.delete_movie(movie_id)
+
+    def delete_all_movies(self) -> bool:
+        return self._repo.delete_all_movies()
+
+
+
 
 
 

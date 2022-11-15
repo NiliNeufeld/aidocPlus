@@ -19,3 +19,11 @@ class MoviesRepo(ABC):
     @abstractmethod
     def search_movies(self, value: str):
         pass
+
+    @abstractmethod
+    def delete_movie(self, movie_id: str):
+        pass
+
+    @abstractmethod
+    def delete_all_movies(self):
+        pass

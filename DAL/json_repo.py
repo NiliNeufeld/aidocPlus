@@ -49,5 +49,11 @@ class JsonRepo(MoviesRepo):
         self.load_data()
         return next((x for x in self.movies_list if x.mid == movie_id), None)
 
-    def search_movies(self, value) -> List[MovieSummary]:
+    def search_movies(self, value):
         print("searching")
+
+    def delete_movie(self, value):
+        print("deleting")
+
+    def delete_all_movies(self, value):
+        print("deleting all movies")

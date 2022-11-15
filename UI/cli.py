@@ -1,6 +1,6 @@
 from BL.create_movie_command import CreateMovieCommand
 import click
-from UI.dependecies import library, val
+from startup.dependecies import library, val
 
 @click.group()
 def main_menu():

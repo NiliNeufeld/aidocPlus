@@ -26,7 +26,3 @@ class DBHandler:
 
     def commit(self) -> None:
         self.connection.commit()
-
-    # def get_tables(self) -> None:
-    #     self.cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
-    #     print(self.cur.fetchall())

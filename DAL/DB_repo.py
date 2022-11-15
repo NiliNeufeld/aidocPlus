@@ -2,6 +2,7 @@ from DAL.movies_repo import MoviesRepo
 from common.movie import Movie
 from common.movie_summary import MovieSummary
 from DAL.DB_handler import DBHandler
+from sqlite3 import Error
 from typing import List
 
 
@@ -68,4 +69,29 @@ class DBRepo(MoviesRepo):
             movies_list.append(m)
         self.DB.close()
         return movies_list
+
+    def delete_movie(self, movie_id) -> bool:
+        if self.get_movie_id(movie_id) is None:
+            return False
+        delete_sql = "DELETE FROM movies WHERE mid="+"\'"+movie_id+"\'"
+        self.DB.connect()
+        self.DB.cur.execute(delete_sql)
+        self.DB.commit()
+        self.DB.close()
+        return True
+
+    def delete_all_movies(self) -> bool:
+        sql = 'DELETE FROM movies'
+        try:
+            self.DB.connect()
+            self.DB.cur.execute(sql)
+            self.DB.commit()
+        except Error:
+            return False
+        else:
+            return True
+        finally:
+            self.DB.close()
+
+
 
